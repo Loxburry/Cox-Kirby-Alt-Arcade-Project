@@ -13,7 +13,9 @@ class SerialPortReader {
     if (!this.port && !this.parser) {
       SerialPort.list()
       // find the good port
+      // This should work for normal Arduino Unos
       .then(ports => ports.find(testFunction))
+      // The below code replaces line 17 for my Black board
       //.then(R.find(p => p.productId === "7523"))
       .then(portInfo => {
         this.port = new SerialPort(portInfo.comName);
