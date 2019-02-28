@@ -30,19 +30,19 @@ void loop() {
   {
     digitalWrite(yellow, LOW);
     digitalWrite(green, LOW);
-    Serial.print("0");
+    Serial.print("0:");
   }
   if(palmVal >= 800 && palmVal < 900) // cat paw
   {
     digitalWrite(yellow, HIGH);
     digitalWrite(green, LOW);
-    Serial.print("2");
+    Serial.print("2:");
   }
   if(palmVal >= 900 )
   {
     digitalWrite(yellow, LOW);
     digitalWrite(green, HIGH);
-    Serial.print("1");
+    Serial.print("1:");
   }
   Serial.print("-");
   delay(20);
