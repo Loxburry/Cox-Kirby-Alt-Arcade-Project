@@ -51,7 +51,11 @@ class handPromt {
         this.isActive = false;
     }
 
-    
+    getRotation(){
+        return this.rotation;
+    }
+
+
     update(deltaTime, keys){
         //connect arrow key and rotation number
         //if correct key and rotation pressed, deactivate arrow
@@ -73,22 +77,25 @@ class handPromt {
     
     draw(graphics) {
         if(this.isActive){
-            // if(condition make red)
             graphics.fillStyle(0xff0000, 1.0);
             graphics.save();
             graphics.translate(this.x, this.y);
             
             //handles rotation of arrow keys
             
+            //down
             if(this.rotation == 0){
                 graphics.rotate(0);
             }
+            //left
             if(this.rotation == 1){
                 graphics.rotate(Math.PI/2);
             }
+            //up
             if(this.rotation == 2){
                 graphics.rotate(Math.PI);
             }
+            //right
             if(this.rotation == 3){
                 graphics.rotate(Math.PI*3/2);
             }

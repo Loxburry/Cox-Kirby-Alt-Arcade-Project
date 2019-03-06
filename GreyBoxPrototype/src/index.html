@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Game</title>
+    <title>Hand Man Stan</title>
 
     <style>
       *{
@@ -18,6 +18,12 @@
         position: absolute;
         color: white;
       }
+      #demon{ 
+        /* Changes the h1 text to mesh on top */
+        position: absolute;
+        left: calc(50vw - 100px);
+        top: calc(40vw - 200px);
+      }
       .hidden{
         display: none;
       }
@@ -29,7 +35,9 @@
       <h1>Gesticulation</h1>
       <h2>Press Space to Begin</h2>
     </div>
-
+    <div id="demon" class ="hidden">
+      <img src="./yerBoi.jpg" height=200 width = 200>
+    </div>
   </body>
 
   <script>

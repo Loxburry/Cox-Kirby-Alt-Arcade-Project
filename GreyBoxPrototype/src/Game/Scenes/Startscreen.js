@@ -9,6 +9,7 @@ class StartScreen extends Phaser.Scene {
     // Ever time this scene begins
     this.overlay.classList.remove('hidden'); // initialize the title prompt as not hidden
     // removes the hidden class from start-screen
+
     this.keys = {
         space: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE), 
     } 

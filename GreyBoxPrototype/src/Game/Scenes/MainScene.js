@@ -3,6 +3,8 @@ const Phaser = require('phaser');
 
 const handPromt = require('../handPromt');
 
+let success = 0;
+this.wasLastFrameDown = false;
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -27,6 +29,11 @@ class MainScene extends Phaser.Scene {
         lineStyle: { width: 3, color: 0xffffff },
       });
 
+    this.overlay = document.querySelector('#demon');
+    
+      // Ever time this scene begins
+    this.overlay.classList.remove('hidden');
+
     this.counter = 0;
     this.handPromts = []; // an array of objects we can call from later
     for(let i = 0; i < 4; i++) { // have 4 promts on screen at a time
@@ -36,6 +43,38 @@ class MainScene extends Phaser.Scene {
     }
 
  update(_, deltaTime) {
+    console.log("Success =" + success);
+    
+    if(this.keys.left.isDown && !this.wasLastFrameDown){
+      if(this.handPromts[success].rotation == 1){
+        this.handPromts[success].deactivate();
+        console.log("left success");
+        success++;
+      }
+    }
+    if(this.keys.right.isDown && !this.wasLastFrameDown){
+      if(this.handPromts[success].rotation == 3){
+        this.handPromts[success].deactivate();
+        console.log("right success");
+        success++;
+      }
+    }
+    if(this.keys.up.isDown && !this.wasLastFrameDown){
+      if(this.handPromts[success].rotation == 2){
+        this.handPromts[success].deactivate();
+        console.log("up success");
+        success++;
+      }
+    }
+    if(this.keys.down.isDown && !this.wasLastFrameDown){
+      if(this.handPromts[success].rotation == 0){
+        this.handPromts[success].deactivate();
+        console.log("down success");
+        success++;
+      }
+    }
+
+    this.wasLastFrameDown = this.keys.up.isDown || this.keys.right.isDown || this.keys.left.isDown || this.keys.down.isDown;
 
     this.handPromts.forEach((b) => {b.update(deltaTime, this.keys); });
     //we need a way to gate the key presses, and deactivate prompts IN ORDER, not all at once (go from 1 > 2 > 3 > 4)
@@ -54,6 +93,9 @@ class MainScene extends Phaser.Scene {
     this.graphics.clear();
 
     this.handPromts.forEach((b) => { b.draw(this.graphics); });
+    if(success == 4){
+      this.overlay.classList.add('hidden');
+    }
 }}
 
 module.exports = MainScene;
