@@ -4,6 +4,8 @@ const Phaser = require('phaser');
 const handPromt = require('../handPromt');
 
 let success = 0;
+let timeLimit = 350;
+let timer = 350;
 this.wasLastFrameDown = false;
 
 function getRandomInt(max) {
@@ -90,7 +92,20 @@ class MainScene extends Phaser.Scene {
     //   }
     // });
 
+    //timer change over time
+    timer -= deltaTime/20;
+    console.log(timer);
+    if(timer <= 0){
+      //code here handles what happens when player runs out of time
+      timer = timeLimit;
+    }
+
     this.graphics.clear();
+    this.graphics.save();
+    this.graphics.fillRect(575, 400, -timer, 20);
+    this.graphics.restore();
+    this.graphics.save();
+    
 
     this.handPromts.forEach((b) => { b.draw(this.graphics); });
     if(success == 4){
