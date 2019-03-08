@@ -28,7 +28,7 @@ class MainScene extends Phaser.Scene {
 
     this.graphics = this.add.graphics({
         fillStyle: { color: 0xeeeeee },
-        lineStyle: { width: 3, color: 0xffffff },
+        lineStyle: { width: 4, color: 0xffffff },
       });
 
     this.overlay = document.querySelector('#demon');
@@ -98,6 +98,8 @@ class MainScene extends Phaser.Scene {
     if(timer <= 0){
       //code here handles what happens when player runs out of time
       timer = timeLimit;
+      this.overlay.classList.add('hidden');
+      this.scene.start('GameOver');
     }
 
     //builds the timer
@@ -112,6 +114,7 @@ class MainScene extends Phaser.Scene {
     this.handPromts.forEach((b) => { b.draw(this.graphics); });
     if(success == 4){
       this.overlay.classList.add('hidden');
+      this.scene.start('GameOver');
     }
 }}
 
