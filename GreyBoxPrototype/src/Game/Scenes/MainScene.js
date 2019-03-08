@@ -100,9 +100,11 @@ class MainScene extends Phaser.Scene {
       timer = timeLimit;
     }
 
+    //builds the timer
     this.graphics.clear();
     this.graphics.save();
     this.graphics.fillRect(575, 400, -timer, 20);
+    this.graphics.strokeRect(575, 400, -350, 20);
     this.graphics.restore();
     this.graphics.save();
     
