@@ -17,6 +17,8 @@
         /* Changes the h1 text to mesh on top */
         position: absolute;
         color: white;
+        left: calc(50vw - 110px);
+        top: calc(50vw - 200px);
       }
       #demon{ 
         /* Changes the h1 text to mesh on top */
@@ -24,9 +26,17 @@
         left: calc(50vw - 100px);
         top: calc(40vw - 200px);
       }
-      #game-over{
+      #game-win{
         position: absolute;
         color: white;
+        left: calc(50vw - 130px);
+        top: calc(50vw - 200px);
+      }
+      #game-lose{
+        position: absolute;
+        color: red;
+        left: calc(50vw - 130px);
+        top: calc(50vw - 200px);
       }
       .hidden{
         display: none;
@@ -36,15 +46,25 @@
 
   <body>
     <div id="start-screen" class="hidden">
+      <center>
       <h1>Gesticulation</h1>
       <h2>Press Space to Begin</h2>
+      </center>
     </div>
     <div id="demon" class ="hidden">
       <img src="./yerBoi.jpg" height=200 width = 200>
     </div>
-    <div id="game-over" class = "hidden">
-      <h1>Game Over!</h1>
-      <h2>Press Space to Restart</h2>
+    <div id="game-win" class="hidden">
+      <center>
+      <h1>You Win!</h1>
+      <h2>Press Ctrl + R to Restart!</h2>
+    </center>
+    </div>
+    <div id="game-lose" class="hidden">
+      <center>
+      <h1>You Lose!</h1>
+      <h2>Press Ctrl + R to Restart!</h2>
+      </center>
     </div>
   </body>
 

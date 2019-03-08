@@ -8,7 +8,7 @@ class GameOver extends Phaser.Scene {
     this.overlay = document.querySelector('#game-over');
     // Ever time this scene begins
     this.overlay.classList.remove('hidden'); // initialize the title prompt as not hidden
-    // removes the hidden class from start-screen
+    // removes the hidden class from game-screen
 
     this.keys = {
         space: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE), 
@@ -18,7 +18,7 @@ class GameOver extends Phaser.Scene {
     if(this.keys.space.isDown){
         this.overlay.classList.add('hidden');
         // make it hidden
-        this.scene.start('Startscreen'); // transition to main scene
+        this.scene.start('Startscreen'); // transition to start scene
     }
    }
    // Hi Willie! From Me~ Kenny
