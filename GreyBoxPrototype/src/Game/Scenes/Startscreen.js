@@ -2,7 +2,7 @@ const Phaser = require('phaser');
 
 class StartScreen extends Phaser.Scene {
    constructor() { 
-    super('StarScreen'); 
+    super('Startscreen'); 
    }
    create(){ // HTML user interface, generate array of bullets
     this.overlay = document.querySelector('#start-screen');

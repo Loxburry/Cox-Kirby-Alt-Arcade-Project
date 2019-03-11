@@ -1,11 +1,11 @@
 const Phaser = require('phaser');
 
-class GameOver extends Phaser.Scene {
+class GameWin extends Phaser.Scene {
    constructor() { 
-    super('GameOver'); 
+    super('GameWin'); 
    }
    create(){ // HTML user interface, generate array of bullets
-    this.overlay = document.querySelector('#game-over');
+    this.overlay = document.querySelector('#game-win');
     // Ever time this scene begins
     this.overlay.classList.remove('hidden'); // initialize the title prompt as not hidden
     // removes the hidden class from game-screen
@@ -15,8 +15,7 @@ class GameOver extends Phaser.Scene {
     } 
    }
    update(totalTime, deltaTime){ // optional use of time, weren't using these
-   console.log("game win"); 
-   if(this.keys.space.isDown){
+    if(this.keys.space.isDown){
         this.overlay.classList.add('hidden');
         // make it hidden
         this.scene.start('Startscreen'); // transition to start scene
@@ -25,4 +24,4 @@ class GameOver extends Phaser.Scene {
    // Hi Willie! From Me~ Kenny
 }
 
-module.exports = GameOver;
+module.exports = GameWin;
