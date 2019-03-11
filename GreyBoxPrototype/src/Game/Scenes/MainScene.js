@@ -99,8 +99,8 @@ class MainScene extends Phaser.Scene {
       timer = timeLimit;
       over = true;
       this.overlay.classList.add('hidden');
-      //this.scene.start('GameOver');
-      this.overlay = document.querySelector('#game-lose');
+      this.scene.start('GameOver');
+      //this.overlay = document.querySelector('#game-lose');
       // Ever time this scene begins
       this.overlay.classList.remove('hidden');
     }
@@ -109,8 +109,8 @@ class MainScene extends Phaser.Scene {
     if(success == 4){
       over = true;
       this.overlay.classList.add('hidden');
-      //this.scene.start('GameOver');
-      this.overlay = document.querySelector('#game-win');
+      this.scene.start('GameOver');
+      //this.overlay = document.querySelector('#game-win');
       // Ever time this scene begins
       this.overlay.classList.remove('hidden');
     }
