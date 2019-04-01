@@ -3,12 +3,13 @@ const Phaser = require('phaser');
 const StartScreen = require('./Scenes/Startscreen');
 const MainScene = require('./Scenes/MainScene');
 const GameOver = require('./Scenes/GameOver');
+const GameWin = require('./Scenes/GameWin');
 
 const phaserConfig = {
   type: Phaser.AUTO,
   width: 800,
   height: 600,
-  scene: [StartScreen, MainScene, GameOver]
+  scene: [StartScreen, MainScene, GameOver, GameWin]
 };
 
 
