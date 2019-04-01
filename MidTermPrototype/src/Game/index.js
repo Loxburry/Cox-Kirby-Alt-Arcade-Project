@@ -3,6 +3,7 @@ const Phaser = require('phaser');
 const StartScreen = require('./Scenes/Startscreen');
 const MainScene = require('./Scenes/MainScene');
 const GameOver = require('./Scenes/GameOver');
+const serialRead = require('./serialRead.js');
 
 const phaserConfig = {
   type: Phaser.AUTO,
@@ -34,6 +35,7 @@ phaserConfig.scene = {
 // Exported Module so game can be initialized elseware
 const GameManager = {
   init: () => {
+    serialRead.openPort(p => /Arduino/.test(p.manufacturer), '-'); // initilize connection with arduino
     game = new Phaser.Game(phaserConfig);
   },
 };

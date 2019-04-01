@@ -1,4 +1,5 @@
 const Phaser = require('phaser');
+const serialRead = require('../serialRead');
 
 class GameOver extends Phaser.Scene {
    constructor() { 
@@ -15,6 +16,7 @@ class GameOver extends Phaser.Scene {
     } 
    }
    update(totalTime, deltaTime){ // optional use of time, weren't using these
+   // TO DO: change key press to finger position
     if(this.keys.space.isDown){
         this.overlay.classList.add('hidden');
         // make it hidden

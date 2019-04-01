@@ -1,4 +1,5 @@
 const Phaser = require('phaser');
+const serialRead = require('../serialRead');
 //Import "Actors"
 
 const handPromt = require('../handPromt');
@@ -45,9 +46,15 @@ class MainScene extends Phaser.Scene {
 
     }
 
+onSerialMessage(msg){
+  console.log(msg);
+  this.serialMsg = msg;
+}
+
  update(_, deltaTime) {
     console.log("Success =" + success);
-    
+    // TO DO: swap key presses with finger position
+    // figure out how to impliment similar last frame down feature
     if(this.keys.left.isDown && !this.wasLastFrameDown){
       if(this.handPromts[success].rotation == 1){
         this.handPromts[success].deactivate();
