@@ -15,6 +15,7 @@ function getRandomInt(max) {
 class MainScene extends Phaser.Scene {
    constructor() { 
     super('MainScene'); 
+    serialRead.addListener(this.onSerialMessage.bind(this));
    }
    create(){ 
     this.didFirstSpawn = false;
