@@ -6,8 +6,8 @@
 // Pin to connect to your conductive sensor 
 int capPinInd = 2;
 int capPinMid = 3;
-int capPinRng = 4;
-int capPinPnk = 5;
+//int capPinRng = 4;
+//int capPinPnk = 5;
 
 // This is how high the sensor needs to read in order
 //  to trigger a touch.  You'll find this number
@@ -26,42 +26,42 @@ void loop(){
   //  turn on the LED
   
   //code for index finger
+  Serial.print(readCapacitivePin(capPinInd));
+  Serial.print('-');
   if (readCapacitivePin(capPinInd) > touchedCutoff) {
     Serial.print('1');
-    Serial.print('-');
   }else{
     Serial.print('0');
-    Serial.print('-');
   }
-
+  Serial.print(':');
+  
   //code for middle finger
   if (readCapacitivePin(capPinMid) > touchedCutoff) {
     Serial.print('1');
-    Serial.print('-');
   }else{
     Serial.print('0');
-    Serial.print('-');
   }
-
+  //Serial.print(':');
+  
   //code for ring finger
-  if (readCapacitivePin(capPinRng) > touchedCutoff) {
-    Serial.print('1');
-    Serial.print('-');
-  }else{
-    Serial.print('0');
-    Serial.print('-');
-  }
+//  if (readCapacitivePin(capPinRng) > touchedCutoff) {
+//    Serial.print('1');
+//    Serial.print(':');
+//  }else{
+//    Serial.print('0');
+//    Serial.print(':');
+//  }
 
   //code for pinky finger
-  if (readCapacitivePin(capPinPnk) > touchedCutoff) {
-    Serial.print('1');
-    Serial.print('-');
-  }else{
-    Serial.print('0');
-    Serial.print('-');
-  }
+//  if (readCapacitivePin(capPinPnk) > touchedCutoff) {
+//    Serial.print('1');
+//    Serial.print(':');
+//  }else{
+//    Serial.print('0');
+//    Serial.print(':');
+//  }
   
-  //Serial.println("-");
+  Serial.println("-");
   // Every 500 ms, print the value of the capacitive sensor
 //  if ( (millis() % 500) == 0){
 //    Serial.print("Capacitive Sensor reads: ");
