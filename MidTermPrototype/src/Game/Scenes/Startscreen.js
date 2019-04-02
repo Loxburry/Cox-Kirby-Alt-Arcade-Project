@@ -12,10 +12,6 @@ class StartScreen extends Phaser.Scene {
     // Ever time this scene begins
     this.overlay.classList.remove('hidden'); // initialize the title prompt as not hidden
     // removes the hidden class from start-screen
-
-    this.keys = {
-        space: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE), 
-    }
     this.serialMsg = ''; 
    }
 
@@ -25,11 +21,10 @@ class StartScreen extends Phaser.Scene {
    }
 
    update(totalTime, deltaTime){ // optional use of time, weren't using these
-    // 0 open finger, 1 cat paw, 2 closed
-    // 0:1:1:2-
-    // handValues = this.serialMsg.split(':');
-    // use handValues as an array for more fingers handValues[2]
-    if(serialMsg == 2){ // this only works for one finger
+    // 0 open finger, 1 closed
+    // 0:1:1:0-
+    handValues = this.serialMsg.split(':');
+    if(handValues[0] == 1 && handValues[1] == 1){ // all fingers are closed
         this.overlay.classList.add('hidden');
         this.scene.start('MainScene');
     }

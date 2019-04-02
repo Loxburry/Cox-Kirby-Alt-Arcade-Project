@@ -1,5 +1,5 @@
     
-const SerialPort = require('serialport');
+const SerialPort = require('serialport'); // Why is this an error
 const DelimiterParser = require('@serialport/parser-delimiter');
 
 let port = undefined;
