@@ -32,7 +32,7 @@ class MainScene extends Phaser.Scene {
     this.prevInt = -1;
     for(let i = 0; i < 4; i++) { // create 4 promts on screen at a time
       if(i == 0 || i == 3){ // if the first or last hand prompt
-        while(randomInt == -1 || this.randomInt == this.prevInt || this.randomInt == 3){ // can't be a closed hand gesture or be the same as the last gesture
+        while(this.randomInt == -1 || this.randomInt == this.prevInt || this.randomInt == 3){ // can't be a closed hand gesture or be the same as the last gesture
           this.randomInt = getRandomInt(3);
         }
       }
@@ -42,7 +42,21 @@ class MainScene extends Phaser.Scene {
         this.randomInt = getRandomInt(3);
         }
       }
-      this.handPromts.push(new handPromt(i, this.randomInt));
+      this.handPromts.push(new handPromt(i, this.randomInt)); // create an array with data on each handPrompt object
+      const currentPrompt = document.getElementById("prompt"+i);
+      if(this.randomInt == 0){ // This and the below lines changes the image based on the random number
+        currentPrompt.src = "./open.png"
+      }
+      if(this.randomInt == 1){
+        currentPrompt.src = "./indexDown.png"
+      }
+      if(this.randomInt == 2){
+        currentPrompt.src =  "./middleDown.png"
+      }
+      if(this.randomInt == 3){
+        currentPrompt.src =  "./closed.png"
+      }
+      currentPrompt.classList.remove('hidden'); // make the prompts visable
       prevInt = randomInt; // after adding handPrompt we set it to previous and do the loop again
       }
     }
@@ -65,30 +79,35 @@ onSerialMessage(msg){
     // Hand Values
     // 0 index finger
     // 1 middle finger
-
+  this.prompt = document.querySelector('#prompt'+success);
     // success is the index/position of the handPrompt 
     if(this.handPromts[success].position == 0 && this.handValues[0] == 0 && this.handValues[1] == 0){ // position 0 | all fingers open
       this.handPromts[success].deactivate();
+      this.prompt.classList.add('hidden');
       success++;
     }
 
     if(this.handPrompts[success].position == 1 && this.handValues[0] == 1 && this.handValues[1] == 0){ // position 1 | index finger down
       this.handPromts[success].deactivate();
+      this.prompt.classList.add('hidden');
       success++;
     }
 
     if(this.handPrompts[success].position == 1 && this.handValues[0] == 0 && this.handValues[1] == 1){ // position 2 | middle finger down
       this.handPromts[success].deactivate();
+      this.prompt.classList.add('hidden');      
       success++;
     }
 
     if(this.handPrompts[success].position == 1 && this.handValues[0] == 1 && this.handValues[1] == 1){ // position 3 | index + middle finger down
       this.handPromts[success].deactivate();
+      this.prompt.classList.add('hidden');
       success++;
     }
 
     // TO DO!!!
     // not sure how to change this
+    // consider commenting out the below line
     this.handPromts.forEach((b) => {b.update(deltaTime, this.keys); });
 
     //builds the timer
@@ -110,6 +129,9 @@ onSerialMessage(msg){
       over = true;
       this.overlay.classList.add('hidden');
       //this.scene.start('GameOver');
+
+      // TO DO
+      // HIDE THE Prompts here
       this.overlay = document.querySelector('#game-lose');
       // Ever time this scene begins
       this.overlay.classList.remove('hidden');
